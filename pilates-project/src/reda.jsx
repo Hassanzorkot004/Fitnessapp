@@ -372,6 +372,7 @@ const LoginScreen = ({ onLogin }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [toastMessage, setToastMessage] = useState('');
 
 //   **const handleSubmit = (e) => {
 //     e.preventDefault();
@@ -461,6 +462,8 @@ const handleSubmit = async (e) => {
       setToastMessage("Welcome! Account created successfully ✅");
 
     } else {
+
+      
       // Login
       if (!email || !password) {
         setError("Please enter email and password.");
@@ -492,6 +495,7 @@ const handleSubmit = async (e) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden" style={{ backgroundColor: THEME.bg }}>
+       <Toast message={toastMessage} onClose={() => setToastMessage('')} />
        {/* Subtle Background Elements */}
        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#5D4037] via-[#8D6E63] to-[#E6D0C0]"></div>
        
