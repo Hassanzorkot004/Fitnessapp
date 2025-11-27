@@ -134,14 +134,4 @@ app.get("/users", async (req, res) => {
 });
 
 app.listen(5000, () => console.log("✅ Backend running on port 5000"));
-```
 
-## 📋 N'oublie pas de vérifier tes variables d'environnement sur Render :
-
-Dans ton **webservice backend** → **Environment**, tu dois avoir :
-```
-DB_USER = fitnesspostgre_user
-DB_PASSWORD = bbVk8a1oQWSiIroMfEKUcc5cMoPkPQtd
-DB_HOST = dpg-d4jpi30gjchc739n7lmg-a
-DB_PORT = 5432
-DB_NAME = fitnesspostgre
