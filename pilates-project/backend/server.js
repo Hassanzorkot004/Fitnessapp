@@ -1,52 +1,3 @@
-// const express = require("express");
-// const { Pool } = require("pg");
-// const cors = require("cors");
-// const bcrypt = require("bcrypt");
-
-// const app = express();
-// app.use(cors());
-// app.use(express.json());
-
-// // Connexion PostgreSQL
-// const pool = new Pool({
-//   user: "postgres",
-//   host: "localhost",
-//   database: "loginsection",
-//   password: "hassan2004",
-//   port: 5432,
-// });
-
-// // ✅ Test route
-// app.get("/", (req, res) => {
-//   res.send("API is running ✅");
-// });
-
-// // ✅ Register user
-// app.post("/register", async (req, res) => {
-//   const { user_name, mail, password } = req.body;
-
-//   const hashedPassword = await bcrypt.hash(password, 10);
-
-//   await pool.query(
-//     "INSERT INTO users (user_name, mail, password) VALUES ($1, $2, $3)",
-//     [user_name, mail, hashedPassword]
-//   );
-
-//   res.json({ message: "User registered ✅" });
-// });
-
-// // ✅ Get all users
-// app.get("/users", async (req, res) => {
-//   const result = await pool.query("SELECT id, user_name, mail FROM users");
-//   res.json(result.rows);
-// });
-
-// app.listen(5000, () => console.log("✅ Backend running on port 5000"));
-
-
-
-
-
 const express = require("express");
 const { Pool } = require("pg");
 const cors = require("cors");
@@ -57,13 +8,6 @@ app.use(cors());
 app.use(express.json());
 
 // Connexion PostgreSQL
-// const pool = new Pool({
-//   user: "postgres",
-//   host: "localhost",
-//   database: "loginsection",
-//   password: "hassan2004",
-//   port: 5432,
-// });
 const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -73,6 +17,26 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 });
 
+// 🆕 Initialisation automatique de la base de données
+const initDatabase = async () => {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        user_name VARCHAR(100) NOT NULL,
+        mail VARCHAR(255) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+    console.log("✅ Table 'users' ready");
+  } catch (err) {
+    console.error("❌ Database init error:", err);
+  }
+};
+
+// Exécuter l'initialisation au démarrage
+initDatabase();
 
 // ✅ Test route
 app.get("/", (req, res) => {
@@ -118,7 +82,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
-// ✅ LOGIN user - NOUVELLE ROUTE
+// ✅ LOGIN user
 app.post("/login", async (req, res) => {
   try {
     const { mail, password } = req.body;
@@ -170,3 +134,14 @@ app.get("/users", async (req, res) => {
 });
 
 app.listen(5000, () => console.log("✅ Backend running on port 5000"));
+```
+
+## 📋 N'oublie pas de vérifier tes variables d'environnement sur Render :
+
+Dans ton **webservice backend** → **Environment**, tu dois avoir :
+```
+DB_USER = fitnesspostgre_user
+DB_PASSWORD = bbVk8a1oQWSiIroMfEKUcc5cMoPkPQtd
+DB_HOST = dpg-d4jpi30gjchc739n7lmg-a
+DB_PORT = 5432
+DB_NAME = fitnesspostgre
