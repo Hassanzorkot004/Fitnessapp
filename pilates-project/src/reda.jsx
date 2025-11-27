@@ -441,7 +441,7 @@ const handleSubmit = async (e) => {
       }
 
       // ✅ APPEL REGISTER - PostgreSQL
-      const response = await fetch("https://fitnessapp-n34v.onrender.com/register", {
+      const response = await fetch("https://fitnessappbackend-7zbf.onrender.com/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -471,7 +471,7 @@ const handleSubmit = async (e) => {
       }
 
       // ✅ APPEL LOGIN - PostgreSQL
-      const response = await fetch("https://fitnessapp-n34v.onrender.com/login", {
+      const response = await fetch("https://fitnessappbackend-7zbf.onrender.com/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
