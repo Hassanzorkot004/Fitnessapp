@@ -441,7 +441,7 @@ const handleSubmit = async (e) => {
       }
 
       // ✅ APPEL REGISTER - PostgreSQL
-      const response = await fetch("https://fitnessappbackend-7zbf.onrender.com/register", {
+      const response = await fetch("http://localhost:5000/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -471,7 +471,7 @@ const handleSubmit = async (e) => {
       }
 
       // ✅ APPEL LOGIN - PostgreSQL
-      const response = await fetch("https://fitnessappbackend-7zbf.onrender.com/login", {
+      const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -1044,6 +1044,9 @@ const ExerciseSection = ({ user }) => {
   const [filterTrimester, setFilterTrimester] = useState('All');
   const [filterCategory, setFilterCategory] = useState('All');
   const [completed, setCompleted] = useState(new Set());
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+
 
   // --- Persistence for Exercises ---
     useEffect(() => {
@@ -1137,7 +1140,13 @@ const ExerciseSection = ({ user }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredExercises.map((ex) => (
             <div key={ex.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border group" style={{ borderColor: completed.has(ex.id) ? THEME.success : 'transparent' }}>
-              <div className="relative aspect-video bg-gray-100 cursor-pointer overflow-hidden">
+
+             
+
+              <div 
+                onClick={() => setSelectedVideo(ex)}
+              
+              className="relative aspect-video bg-gray-100 cursor-pointer overflow-hidden">
                 <img src={ex.thumbnail} alt={ex.title} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition-all">
                   <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center pl-1 shadow-lg transform group-hover:scale-110 transition-transform duration-300">
@@ -1182,6 +1191,60 @@ const ExerciseSection = ({ user }) => {
           ))}
         </div>
       )}
+
+    
+     {selectedVideo && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setSelectedVideo(null)}
+        >
+          <div 
+            className="bg-white rounded-2xl overflow-hidden max-w-4xl w-full shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-6 border-b flex justify-between items-center" style={{ backgroundColor: THEME.highlight }}>
+              <div>
+                <h3 className="font-serif text-2xl mb-1" style={{ color: THEME.primary }}>{selectedVideo.title}</h3>
+                <p className="text-sm text-gray-600">{selectedVideo.duration} • {selectedVideo.focus}</p>
+              </div>
+              <button 
+                onClick={() => setSelectedVideo(null)}
+                className="p-2 rounded-full hover:bg-white/50 transition-colors"
+              >
+                <X size={24} color={THEME.primary} />
+              </button>
+            </div>
+            
+            <div className="aspect-video bg-black">
+              <iframe
+                width="100%"
+                height="100%"
+                src={selectedVideo.url}
+                title={selectedVideo.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
+            </div>
+            
+            <div className="p-6 bg-gray-50">
+              <button 
+                onClick={() => {
+                  toggleComplete(selectedVideo.id);
+                  setSelectedVideo(null);
+                }}
+                className="w-full py-3 rounded-xl font-medium text-white transition-all hover:opacity-90"
+                style={{ backgroundColor: THEME.secondary }}
+              >
+                Mark as Complete & Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
     </div>
   );
 };
