@@ -22,7 +22,7 @@ import './App.css';
 function App() {
   // ✅ useEffect à l'intérieur du composant
   useEffect(() => {
-    fetch("https://fitnessapp-n34v.onrender.com")
+    fetch("https://fitnessappbackend-7zbf.onrender.com")
       .then(res => res.json())
       .then(data => console.log(data));
   }, []); // le tableau vide [] signifie "exécuter au montage seulement"
