@@ -101,7 +101,7 @@ const EXERCISES = [
     duration: "12 min",
     focus: "Pain Relief",
     url: "https://www.youtube.com/embed/4pF125F_Y",
-    thumbnail: "https://files.imagetourl.net/uploads/1764287788540-22f0d9f5-af1b-42e6-9209-d1ab61566b7f.png"
+    thumbnail: "https://files.imagetourl.net/uploads/1764288662501-0f833547-18ff-4122-9b94-ae81a4f8c8e8.png"
   },
   {
     id: 6,
