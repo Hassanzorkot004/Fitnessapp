@@ -61,7 +61,7 @@ const EXERCISES = [
     duration: "15 min",
     focus: "Nausea Relief",
     url: "https://www.youtube.com/embed/s-7lyvblFNI", 
-    thumbnail: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80"
+    thumbnail: "https://files.imagetourl.net/uploads/1764287453630-8216153a-3c6e-4083-a534-a47643ab9bc9.png"
   },
   {
     id: 2,
@@ -71,7 +71,7 @@ const EXERCISES = [
     duration: "20 min",
     focus: "Posture Support",
     url: "https://www.youtube.com/embed/v7AYKMP6rOE",
-    thumbnail: "https://images.unsplash.com/photo-1544367563-12123d8966cd?auto=format&fit=crop&w=800&q=80"
+    thumbnail: "https://files.imagetourl.net/uploads/1764287638839-c738f2f3-0638-45bb-95b3-0661270879fa.png"
   },
   {
     id: 3,
@@ -81,7 +81,7 @@ const EXERCISES = [
     duration: "18 min",
     focus: "Hip Mobility",
     url: "https://www.youtube.com/embed/4pF125F_Y",
-    thumbnail: "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=800&q=80"
+    thumbnail: "https://files.imagetourl.net/uploads/1764287680581-f5c2ab11-8ef0-4827-b201-8a10df56d4a2.png "
   },
   {
     id: 4,
@@ -91,7 +91,7 @@ const EXERCISES = [
     duration: "10 min",
     focus: "Labor Prep",
     url: "https://www.youtube.com/embed/0p6YG_l_iM",
-    thumbnail: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80"
+    thumbnail: "https://files.imagetourl.net/uploads/1764287732201-0436c3b9-732f-4cfb-ad96-5a1b8dde2958.png"
   },
   {
     id: 5,
@@ -101,7 +101,7 @@ const EXERCISES = [
     duration: "12 min",
     focus: "Pain Relief",
     url: "https://www.youtube.com/embed/4pF125F_Y",
-    thumbnail: "https://images.unsplash.com/photo-1599447421405-0e5a19618e98?auto=format&fit=crop&w=800&q=80"
+    thumbnail: "https://files.imagetourl.net/uploads/1764287788540-22f0d9f5-af1b-42e6-9209-d1ab61566b7f.png"
   },
   {
     id: 6,
@@ -111,7 +111,7 @@ const EXERCISES = [
     duration: "8 min",
     focus: "Relaxation",
     url: "https://www.youtube.com/embed/s-7lyvblFNI",
-    thumbnail: "https://images.unsplash.com/photo-1528319725582-ddc096101511?auto=format&fit=crop&w=800&q=80"
+    thumbnail: "https://files.imagetourl.net/uploads/1764287848421-391c1734-3cd2-4d71-a9fb-589c92e5a8c0.png"
   }
 ];
 
